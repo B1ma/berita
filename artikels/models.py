@@ -7,3 +7,5 @@ class Gamesartikels(models.Model):
     date = models.CharField(max_length=225)
     desc = models.TextField()
     key = models.CharField(max_length=225)
+    
+

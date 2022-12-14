@@ -2,4 +2,7 @@ from django.contrib import admin
 from .models import *
 # Register your models here.
 
-admin.site.register(Gamesartikels)
+class Admingame(admin.ModelAdmin):
+    list_display = ["title", "thumb", "date", 'desc', 'key']
+
+admin.site.register(Gamesartikels, Admingame)

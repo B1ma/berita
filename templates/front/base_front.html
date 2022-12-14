@@ -26,6 +26,7 @@
 
     <!-- Custom styles for this template -->
     <link href="{% static 'front/style.css '%}" rel="stylesheet">
+    <link href="{% static 'front/about1.css '%}" rel="stylesheet">
 
     <!-- Responsive styles for this template -->
     <link href="{% static 'front/css/responsive.css '%}" rel="stylesheet">
@@ -42,7 +43,56 @@
     <![endif]-->
 
 </head>
-{% block konten %}{% endblock konten %}
+<div id="wrapper">
+  <header class="header header">
+    <div class="container-fluid">
+      <nav
+        class="navbar navbar-toggleable-md navbar-inverse fixed-top bg-inverse"
+      >
+        <button
+          class="navbar-toggler navbar-toggler-right"
+          type="button"
+          data-toggle="collapse"
+          data-target="#navbarCollapse"
+          aria-controls="navbarCollapse"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <a class="navbar-brand" href="{% url 'homepage' %}"
+          ><img src="{% static 'front/images/version/tester.png' %}" alt=""
+        /></a>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'homepage' %}">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'hotnews' %}">Hot News</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'contact' %}">Contact Us</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'about' %}">About Us</a>
+            </li>
+            
+            
+          </ul>
+          <div class="form-inline my-2 my-lg-0">
+            <a class="btn btn-outline-success my-2 my-sm-0" href type="submit">Login</a>
+          </div>
+        </div>
+      </nav>
+    </div>
+    <!-- end container-fluid -->
+  </header>
+  <!-- end market-header -->
+
+  {% block konten %}{% endblock konten %}
+ 
+</div>
     <!-- Core JavaScript
     ================================================== -->
     <script src="{% static 'front/js/jquery.min.js '%}"></script>
