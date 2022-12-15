@@ -1,6 +1,8 @@
 from django.http import HttpResponse
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from artikels.models import *
+from django.contrib.auth.models import User
+from django.contrib.auth import login, logout, authenticate
 import requests
 import random
 
@@ -91,3 +93,47 @@ def author(request):
     template_name = "front/author.html"
 
     return render(request, template_name)
+
+def loginview(request):
+    if request.user.is_authenticated:
+        return redirect("dashboard")
+    
+    template_name = "account/login.html"
+    
+    if request.method == "POST":
+        username = request.POST.get("username")
+        password = request.POST.get("password")
+        user = authenticate(request, username=username, password=password)
+        if user is not None:
+            login(request, user)
+            return redirect("dashboard")
+        else:
+            print("Username atau password anda salah")
+    
+    return render(request, template_name)
+
+def logout_view(request):
+    logout(request)
+    return redirect("homepage")
+
+def tech(request):
+    template_name = "front/tech.html"
+    
+    tech = Informatic.objects.all()
+    
+    context = {
+        "tech" : tech
+    }
+    
+    return render(request, template_name, context)
+
+def detailTech(request, id):
+    template_name = "front/detail.html"
+     
+    detail = Informatic.objects.get(id=id)
+     
+    context = {
+         "data" : detail
+     }
+     
+    return render(request, template_name, context)
